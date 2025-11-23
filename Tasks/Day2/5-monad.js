@@ -27,3 +27,12 @@ class Monad {
     return container.map(fn);
   }
 }
+
+const createAdder = (initial) => {
+  return Monad.of(initial);
+};
+const add = (x) => (y) => x + y;
+const log = (x) => console.log('Result:', +x);
+
+const result = createAdder(1).map(add(9)).map(add(1)).map(add(7)).chain(log);
+

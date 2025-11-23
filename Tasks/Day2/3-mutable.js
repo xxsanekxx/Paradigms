@@ -18,6 +18,18 @@ class Adder {
   }
 }
 
-const sum1 = new Adder(1).add(9).add(1).add(7);
-// TODO: sum1 = createAdder(1).add(9).add(1).add(7);
+
+function createAdder(initial) {
+  let value = initial;
+  return {
+    add(x) {
+      value += x;
+      return this;
+    },
+    valueOf() { return value; },
+  };
+};
+
+// const sum1 = new Adder(1).add(9).add(1).add(7);
+const sum1 = createAdder(1).add(9).add(1).add(7);
 console.log('Sum:', +sum1);
